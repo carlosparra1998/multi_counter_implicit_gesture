@@ -1,17 +1,58 @@
 # multi_counter_implicit_gesture
 
-A new Flutter project.
+Project where the `DeepObservable` state manager is tested implicitly.
 
-## Getting Started
+```dart
+class _MyRowCounterState extends State<MyRowCounter> {
+  @override
+  Widget build(BuildContext context) {
+    MyCounterProvider provider = context.deepGet<MyCounterProvider>();
+    DeepObservable<int> observable = provider.counters[widget.identifier];
 
-This project is a starting point for a Flutter application.
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Counter ${widget.identifier + 1}:',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+              ),
+              Text(
+                '${observable.reactiveValue(context)}',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+              ),
+              Row(
+                children: [
+                  MyIconButton(
+                    Icons.remove,
+                    onTap: () {
+                      provider.decrementCounter(widget.identifier);
+                    },
+                  ),
+                  SizedBox(width: 10),
+                  MyIconButton(
+                    Icons.add,
+                    onTap: () {
+                      provider.incrementCounter(widget.identifier);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# multi_counter_implicit_gesture
+- [Deep Observer](https://github.com/carlosparra1998/deep_observer)
