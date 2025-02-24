@@ -1,4 +1,4 @@
-import 'package:multi_counter_implicit_gesture/deep_observer/deep_observer.dart';
+import 'package:deep_observer/deep_observer.dart';
 
 import 'controllers/counter_provider.dart';
 import 'views/home_view.dart';
