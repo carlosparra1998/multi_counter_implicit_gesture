@@ -2,6 +2,9 @@
 
 Project where the `DeepObservable` state manager is tested implicitly.
 
+- [Deep Observer](https://github.com/carlosparra1998/deep_observer)
+
+
 ```dart
 class _MyRowCounterState extends State<MyRowCounter> {
   @override
@@ -54,5 +57,3 @@ class _MyRowCounterState extends State<MyRowCounter> {
   }
 }
 ```
-
-- [Deep Observer](https://github.com/carlosparra1998/deep_observer)
